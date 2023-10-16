@@ -1,0 +1,12 @@
+what is it - provision servers. 
+three servers - provision servers, vs doing manual work. automate everything <-- ansibles job.
+ansible control host == ansible server. connects to servers in fleet to issue commands to provision.
+ansible is only in control host and issue ssh commands
+
+best practices and inefficient ways. 
+control host / managing server will store scripts. git repo can also contain playbooks
+
+created 3 VMs
+
+ssh and key management -- https://www.youtube.com/watch?v=-Q4T9wLsvOQ&list=PLT98CRl2KxKEUHie1m24-wkyHpEsa4Y70&index=2
+ - 
