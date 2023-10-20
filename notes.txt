@@ -10,3 +10,44 @@ created 3 VMs
 
 ssh and key management -- https://www.youtube.com/watch?v=-Q4T9wLsvOQ&list=PLT98CRl2KxKEUHie1m24-wkyHpEsa4Y70&index=2
  - 
+ 
+ 
+ 
+ ## issue a command without a config file
+ jeremy:~/environment/ansible_basics (main) $ ansible all --key-file ~/.ssh/ansible -i ~/environment/ansible_basics/inventory -m ping               
+[WARNING]: Platform linux on host 10.0.0.91 is using the discovered Python interpreter at /usr/bin/python3, but future installation of another
+Python interpreter could change this. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more
+information.
+10.0.0.91 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+[WARNING]: Platform linux on host 10.0.0.79 is using the discovered Python interpreter at /usr/bin/python3, but future installation of another
+Python interpreter could change this. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more
+information.
+10.0.0.79 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+
+
+### create a config file:
+
+jeremy:~/environment/ansible_basics (main) $ cat ansible.cfg 
+[defaults]
+inventory = ~/environment/ansible_basics/inventory
+private_key_file = ~/.ssh/ansible
+
+
+ 
+ ## ansible command to list all hosts  in inventory file
+ jeremy:~/environment/ansible_basics (main) $ ansible all --list-hosts
+  hosts (2):
+    10.0.0.79
+    10.0.0.91
